@@ -1,3 +1,5 @@
+# groobyte Challenge
+
 The project is written in the micro Lumen framework. You can see the official documentation below. I chose this framework because it is lighter and developed for the use of API Rest, and it is based on Laravel.
 
 I used MySQL for the database.
@@ -12,7 +14,7 @@ In order not to waste time creating users and clients, some seeders were designe
 
 
 
-Tech Documentation
+# Tech Documentation
 
 PHP 8.2.1 (cli) (built: Jan 13 2023 10:42:44) (NTS)
 
