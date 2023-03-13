@@ -1,18 +1,18 @@
-# groobyte Challenge
+# GROOBYTE Challenge
 
-The project is written in the micro Lumen framework. You can see the official documentation below. I chose this framework because it is lighter and developed for the use of API Rest, and it is based on Laravel.
+The project is written in Lumen because it is a lighter framework specifically for microservices. It is a framework based on Laravel. You can see the official documentation below.
 
 I used MySQL for the database.
 
 Create the two requested apps to create and cancel a subscription.
+
+I also decided to use the repository pattern to handle the data source logic; This pattern allows you to add data sources as needed, such as another database, cache, or API. In addition, it helps you so that the logic of the controller does not depend on the ORM in case it is decided to change.
 
 The documentation for these can be found at the following link:
 
 https://documenter.getpostman.com/view/16786579/2s93JtRj6T
 
 In order not to waste time creating users and clients, some seeders were designed to work on what interests us, which is making and canceling the subscription.
-
-
 
 # Tech Documentation
 
