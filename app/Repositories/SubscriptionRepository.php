@@ -3,6 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\Subscription;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SubscriptionRepository implements SubscriptionRepositoryInterface
@@ -63,5 +66,24 @@ class SubscriptionRepository implements SubscriptionRepositoryInterface
         $customer->save();
 
         return $customer;
+    }
+
+    public function subscriptionsReport($date)
+    {
+        $statusActive = Subscription::STATUS_ACTIVE;
+        $statusCancelled = Subscription::STATUS_CANCELLED;
+
+        $data = $this->model
+                ->select(DB::raw("COUNT(CASE WHEN status = '{$statusActive}' AND start_date = '{$date}' THEN 1 END) AS new_subscription,
+                                COUNT(CASE WHEN status = '{$statusCancelled}' AND end_date = '{$date}' THEN 1 END) AS canceled_subscriptions,
+                                COUNT(CASE WHEN status = '{$statusActive}' THEN 1 END) AS total_active_subscriptions"))
+                ->where('start_date', '<=', $date)
+                ->orWhere(function(Builder $query) {
+                    $query->where('end_date', '>', "2023-03-13")
+                        ->whereNull('end_date');
+                })
+                ->first();
+        
+        return $data;
     }
 }
