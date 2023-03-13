@@ -14,6 +14,10 @@ https://documenter.getpostman.com/view/16786579/2s93JtRj6T
 
 In order not to waste time creating users and clients, some seeders were designed to work on what interests us, which is making and canceling the subscription.
 
+Finally, the requested command was created to obtain a report of the subscriptions.
+
+`php artisan subscriptions:report Y-m-d`
+
 # Tech Documentation
 
 PHP 8.2.1 (cli) (built: Jan 13 2023 10:42:44) (NTS)
