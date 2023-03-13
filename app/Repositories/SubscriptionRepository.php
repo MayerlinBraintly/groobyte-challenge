@@ -78,8 +78,8 @@ class SubscriptionRepository implements SubscriptionRepositoryInterface
                                 COUNT(CASE WHEN status = '{$statusCancelled}' AND end_date = '{$date}' THEN 1 END) AS canceled_subscriptions,
                                 COUNT(CASE WHEN status = '{$statusActive}' THEN 1 END) AS total_active_subscriptions"))
                 ->where('start_date', '<=', $date)
-                ->orWhere(function(Builder $query) {
-                    $query->where('end_date', '>', "2023-03-13")
+                ->orWhere(function($query) use ($date) {
+                    $query->where('end_date', '>', $date)
                         ->whereNull('end_date');
                 })
                 ->first();
