@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Subscription as SubscriptionRequest;
 use App\Models\Subscription;
-use Illuminate\Http\Request;
 
 use App\Repositories\CustomerRepositoryInterface;
 use App\Repositories\SubscriptionRepositoryInterface;
@@ -23,15 +23,10 @@ class SubscriptionController extends Controller
         $this->customerRepository = $customerRepositrory;
     }
 
-    public function create(Request $request)
+    public function create(SubscriptionRequest $request)
     {
         try {
-            $data = $this->validate($request, [
-                'customer_id' => 'required',
-                'service' => 'required|in:Basic,Premium',
-                'start_date' => 'required|date_format:Y-m-d'
-            ]);
-
+            $data = $request->all();
             $client = $data['customer_id'];
     
             $this->customerRepository->find($client);
