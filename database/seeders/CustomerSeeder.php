@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+
 
 class CustomerSeeder extends Seeder
 {
@@ -15,22 +16,13 @@ class CustomerSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('customers')->insert([
-            'name' => Str::random(10),
-            'surname' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-        ]);
-
-        DB::table('customers')->insert([
-            'name' => Str::random(10),
-            'surname' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-        ]);
-
-        DB::table('customers')->insert([
-            'name' => Str::random(10),
-            'surname' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-        ]);
+        $faker = Faker::create();
+        foreach (range(1, 10) as $index) {
+            DB::table('customers')->insert([
+                'name' => $faker->name,
+                'surname' => $faker->name,
+                'email' => $faker->email,
+            ]);
+        }
     }
 }
