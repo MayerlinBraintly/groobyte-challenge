@@ -49,7 +49,7 @@ class SubscriptionController extends Controller
     public function cancel($id)
     {
         try {
-            $customer = $this->subscriptionRepository->find($id);
+            $customer = $this->subscriptionRepository->findSubscriptionByCustomer($id);
 
             $response = $this->subscriptionRepository->cancel($customer);
 

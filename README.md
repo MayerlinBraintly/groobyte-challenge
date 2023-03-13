@@ -14,6 +14,8 @@ https://documenter.getpostman.com/view/16786579/2s93JtRj6T
 
 In order not to waste time creating users and clients, some seeders were designed to work on what interests us, which is making and canceling the subscription.
 
+The link will request the `api_token`; we get it from the `users` table, and the user will be automatically generated when we run the seeders.
+
 Finally, the requested command was created to obtain a report of the subscriptions.
 
 `php artisan subscriptions:report Y-m-d`

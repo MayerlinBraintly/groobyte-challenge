@@ -24,7 +24,7 @@ class Subscription extends FormRequest
     protected function rules(): array
     {
         return [
-            'customer_id' => 'required',
+            'customer_id' => 'required|integer',
             'service' => 'required|in:Basic,Premium',
             'start_date' => 'required|date_format:Y-m-d'
         ];

@@ -52,6 +52,15 @@ class SubscriptionRepository implements SubscriptionRepositoryInterface
         return $subscription;
     }
 
+    public function findSubscriptionByCustomer($id)
+    {
+        if (null == $subscription = $this->model->where('customer_id', $id)->first()) {
+            throw new ModelNotFoundException("Subscription not found", 404);
+        }
+
+        return $subscription;
+    }
+
     public function checkSubscriptionStatus($clientId)
     {
         $subscription = $this->model->where('customer_id', $clientId)->first();

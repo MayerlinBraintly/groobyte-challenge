@@ -9,4 +9,6 @@ interface SubscriptionRepositoryInterface extends RepositoryInterface
     public function cancel($data);
 
     public function subscriptionsReport($date);
+
+    public function findSubscriptionByCustomer($id);
 }
